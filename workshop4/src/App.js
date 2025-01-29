@@ -1,23 +1,21 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
-
+import users from './data/users';
+import UserCard from './components/UserCard';
+import { useState } from 'react';
 function App() {
+  const [visibleCount, setVisibleCount] = useState(5);
+  const showMoreCards = () => {
+    setVisibleCount(visibleCount + 5);
+  };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="user-card-container">
+      {users.slice(0,visibleCount).map((user,index)=>{
+       return <UserCard key={index} user={user}/>
+      })}
+      </div>
+      <button onClick={showMoreCards}>Click to show rest of cards</button>
     </div>
   );
 }
