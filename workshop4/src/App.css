@@ -1,9 +1,13 @@
 
-body {
+html,body {
     margin: 0;
     font-family: Arial, sans-serif;
     background-color: #f4f4f4; 
-  }
+  
+    height: 100%;
+    
+    }
+  
   
   
   .App {
@@ -54,4 +58,10 @@ body {
     color: #666;             
     margin: 8px 0;
   }
-  
+  .login {
+    display: flex;
+    justify-content: center;  
+    align-items: center;      
+    height: 100vh;  
+    flex-direction: column;
+  }
