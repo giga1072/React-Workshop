@@ -1,5 +1,5 @@
 import React from "react";
-import UniversityCard from "../Universities/UniversityCar";
+import UniversityCard from "../Universities/UniversityCard";
 import Button from "../Button/Button";
 import { useState, useEffect } from "react";
 import Filter from "../Filter/Filter";

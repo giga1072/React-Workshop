@@ -1,5 +1,5 @@
 import './App.css';
-import {Routes, Route} from 'react-router-dom';   
+import {Routes, Route, Navigate} from 'react-router-dom';   
 import Home from './Home/Home'; 
 import Details from './DetailedInfo/Details';
 
@@ -12,6 +12,7 @@ function App() {
     <div className="App">
 
 <Routes>
+<Route path="/" element={<Navigate to="/home" />} />
   <Route 
      path="/home" 
      element={<Home  /> }/>
