@@ -1,60 +1,53 @@
 import React, { useState } from "react";
 import useCustomHook from "../Hooks/useCustomHook";
-import { getRandomUsername, randomUsers } from "./RandomUsers";
+import { getRandomUsername } from "./RandomUsers";
 import Modal from "../Modal/Modal";
 
 function Comments() {
+  
   const [posts, setPosts] = useCustomHook("https://jsonplaceholder.typicode.com/posts");
+  const [showModal, setShowModal] = useState(false);
   const [selectedPost, setSelectedPost] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
 
- 
-  const openModal = (post) => {
-    setSelectedPost(post); 
-    setIsModalOpen(true); 
+
+  const handleDeletePost = () => {
+    setPosts(posts.filter((post) => post.id !== selectedPost.id));
+    setShowModal(false);
   };
 
-
-  const closeModal = () => {
-    setSelectedPost(null);
-    setIsModalOpen(false); 
-  };
-
- 
-  const removeComment = () => {
-    const updatedPosts = posts.filter((post) => post.id !== selectedPost.id); 
-    setPosts(updatedPosts)
-    closeModal(); 
-  };
-
- 
   return (
     <div>
       <ul>
         {posts.map((post) => (
           <li key={post.id}>
+           
+            <p><strong>{getRandomUsername()}</strong></p>
             <img
               src={`https://picsum.photos/100/100?random=${post.id}`}
               alt="random"
             />
-            <u>
-              <p>
-                <strong>{getRandomUsername(randomUsers)}</strong>
-              </p>
-            </u>
             <p>{post.title}</p>
             <p>{post.body}</p>
-            <button onClick={() => openModal(post)}>Delete Post</button>
+            <button
+              onClick={() => {
+                setSelectedPost(post);
+                setShowModal(true);
+              }}
+            >
+              Delete Post
+            </button>
           </li>
         ))}
       </ul>
 
-      
-      <Modal
-        isOpen={isModalOpen}
-        onClose={closeModal}
-        onConfirm={removeComment}
-      />
+     
+      {showModal && (
+        <Modal onClose={() => setShowModal(false)}>
+          <h1>Are you sure you want to delete this post?</h1>
+          <button onClick={() => setShowModal(false)}>Cancel</button>
+          <button onClick={handleDeletePost}>Yes, Delete</button>
+        </Modal>
+      )}
     </div>
   );
 }
