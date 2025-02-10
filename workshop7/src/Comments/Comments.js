@@ -1,41 +1,40 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import useCustomHook from "../Hooks/useCustomHook";
 import { getRandomUsername, randomUsers } from "./RandomUsers";
-import Modal from "../Modal/Modal"; 
+import Modal from "../Modal/Modal";
 
 function Comments() {
-  const [posts, setPosts] = useCustomHook(
-    "https://jsonplaceholder.typicode.com/posts"
-  );
+  const [posts, setPosts] = useCustomHook("https://jsonplaceholder.typicode.com/posts");
   const [selectedPost, setSelectedPost] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+ 
   const openModal = (post) => {
-    setSelectedPost(post);
-    setIsModalOpen(true);
-    console.log("Opening modal for post", post)
-    console.log("isModalOpen state after set:", isModalOpen);
-  };
-  const closeModal = () => {
-    setSelectedPost(null);
-    setIsModalOpen(false);
-  };
-  const removeComment = () => {
-   const updatedComments=  setPosts(posts.filter((post) => post.id !== selectedPost.id));
-   setPosts(updatedComments);
-    closeModal();
+    setSelectedPost(post); 
+    setIsModalOpen(true); 
   };
 
+
+  const closeModal = () => {
+    setSelectedPost(null);
+    setIsModalOpen(false); 
+  };
+
+ 
+  const removeComment = () => {
+    const updatedPosts = posts.filter((post) => post.id !== selectedPost.id); 
+    setPosts(updatedPosts)
+    closeModal(); 
+  };
+
+ 
   return (
     <div>
       <ul>
-        {posts.map((postsData) => (
-          
-             
-            <li key={postsData.id} >
+        {posts.map((post) => (
+          <li key={post.id}>
             <img
-              src={`https://picsum.photos/100/100?random=${postsData.id}`}
+              src={`https://picsum.photos/100/100?random=${post.id}`}
               alt="random"
             />
             <u>
@@ -43,18 +42,19 @@ function Comments() {
                 <strong>{getRandomUsername(randomUsers)}</strong>
               </p>
             </u>
-            <p>{postsData.title}</p>
-            <p>{postsData.body}</p>
-            <button onClick={() => openModal(postsData)}>Delete Post</button>
-          
+            <p>{post.title}</p>
+            <p>{post.body}</p>
+            <button onClick={() => openModal(post)}>Delete Post</button>
           </li>
         ))}
       </ul>
+
+      
       <Modal
-       isOpen={isModalOpen}
-       onClose={closeModal}
-       onConfirm={removeComment}
-     />
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        onConfirm={removeComment}
+      />
     </div>
   );
 }
