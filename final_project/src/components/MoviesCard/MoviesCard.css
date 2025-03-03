@@ -1,0 +1,102 @@
+
+.movies-card-container {
+  padding: 20px;
+  background: url('https://wallpapers.com/images/featured/movie-9pvmdtvz4cb0xl37.jpg');
+  font-family: Arial, sans-serif;
+}
+
+
+
+.movies-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+
+.search-bar {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.filter-input {
+  width: 60%;
+  max-width: 400px;
+  padding: 10px;
+  border: 1px solid #0d6efd;
+  border-radius: 4px;
+  outline: none;
+  font-size: 1rem;
+  transition: box-shadow 0.3s ease;
+}
+
+.filter-input:focus {
+  box-shadow: 0 0 5px rgba(13, 110, 253, 0.5);
+}
+
+
+.movies-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+
+.posts-item {
+  background-color: #ffffff;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.posts-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 15px rgba(13, 110, 253, 0.3);
+}
+
+
+.post-header {
+  position: relative;
+  text-align: center;
+}
+
+
+.movie-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  cursor: pointer;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.movie-image:hover {
+  transform: scale(1.05);
+  filter: brightness(0.95);
+}
+
+
+.movie-title {
+  margin: 10px 0;
+  font-size: 1.1rem;
+  color: #0d6efd;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.movie-title:hover {
+  color: #084298;
+}
+
+
+.post-details {
+  padding: 15px;
+  font-size: 0.9rem;
+  color: #333;
+  line-height: 1.4;
+}
+
+.post-details p {
+  margin: 5px 0;
+}
+
