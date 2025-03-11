@@ -1,0 +1,43 @@
+
+
+.nav-bar {
+  background-color: #3e1f47; 
+  color: #fff;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+/* #0d6efd */
+
+.nav-bar .left {
+  display: flex;
+  gap: 1rem;
+}
+
+
+.nav-bar .left button {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: background-color 0.2s ease;
+}
+.nav-bar .left button:hover {
+  background-color: #0056b3;
+  border-radius: 4px;
+}
+
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+
+.user-info span {
+  font-weight: bold;
+}
